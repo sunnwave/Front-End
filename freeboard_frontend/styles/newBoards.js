@@ -5,14 +5,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 1200px;
-  padding-top: 80px;
-  padding-left: 102px;
-  padding-right: 102px;
-  top: 717px;
-  left: 360px;
+  margin: 100px;
+  padding: 80px 102px 100px 102px;
   border: 1px solid gray;
   box-shadow: 0px 4px 20px 0px #00000033;
 `;
+
 export const Title = styled.div`
   font-family: Noto Sans CJK KR;
   font-size: 36px;
@@ -40,6 +38,11 @@ export const Writer = styled.input`
   height: 52px;
   border: 1px solid #bdbdbd;
   padding: 20px;
+
+  width: 486px;
+  height: 52px;
+  padding-left: 16px;
+  border: 1px solid #bdbdbd;
 `;
 export const Password = styled.input`
   width: 486px;
@@ -172,4 +175,9 @@ export const RegisterButton = styled.button`
   margin-right: 12px;
   cursor: pointer;
   background: #ffd600;
+`;
+
+export const Error = styled.div`
+  color: red;
+  margin-top: 10px;
 `;
