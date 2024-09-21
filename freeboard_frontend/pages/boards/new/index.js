@@ -26,7 +26,25 @@ import {
 } from "../../../styles/newBoards";
 
 import { useState } from "react";
-// import { useForm } from 'react-hook-form';
+import { gql, useMutation } from "@apollo/client";
+
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+      writer
+      title
+      contents
+      youtubeUrl
+      likeCount
+      dislikeCount
+      images
+      createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
 
 export default function NewPage() {
   const [writer, setWriter] = useState("");
@@ -34,14 +52,16 @@ export default function NewPage() {
   const [subject, setSubject] = useState("");
   const [contents, setContents] = useState("");
   const [zipcode, setZipcode] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
   const [youtube, setYoutube] = useState("");
 
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [subjectError, setSubjectError] = useState("");
   const [contentsError, setContentsError] = useState("");
+
+  const [createBoard] = useMutation(CREATE_BOARD);
 
   function onChangeWriter(event) {
     setWriter(event.target.value);
@@ -70,17 +90,17 @@ export default function NewPage() {
   function onChangeZipcode(event) {
     setZipcode(event.target.value);
   }
-  function onChangeAddress1(event) {
-    setAddress1(event.target.value);
+  function onChangeAddress(event) {
+    setAddress(event.target.value);
   }
-  function onChangeAddress2(event) {
-    setAddress2(event.target.value);
+  function onChangeAddressDetail(event) {
+    setAddressDetail(event.target.value);
   }
   function onChangeYoutube(event) {
     setYoutube(event.target.value);
   }
 
-  function onClickRegister(event) {
+  const onClickRegister = async (event) => {
     if (!writer) {
       setWriterError("작성자를 입력하지 않았습니다. 작성자를 입력해주세요");
     }
@@ -95,10 +115,22 @@ export default function NewPage() {
     if (!contents) {
       setContentsError("내용을 입력하지 않았습니다. 내용을 입력해주세요");
     }
-    if (writer && password && subject && contents) {
+
+    const result = await createBoard({
+      variables: {
+        createBoardInput: {
+          writer: writer,
+          password: password,
+          title: subject,
+          contents: contents,
+        },
+      },
+    });
+    console.log(result);
+    if (writer && password && subject && contents && result) {
       alert("게시글이 등록되었습니다.");
     }
-  }
+  };
 
   return (
     <Wrapper>
@@ -146,8 +178,8 @@ export default function NewPage() {
           <Zipcode placeholder="07250" onChange={onChangeZipcode} />
           <SearchButton>우편번호 검색</SearchButton>
         </ZipcodeWrapper>
-        <Address onChange={onChangeAddress1} />
-        <Address onChange={onChangeAddress2} />
+        <Address onChange={onChangeAddress} />
+        <Address onChange={onChangeAddressDetail} />
       </InputWrapper>
       <InputWrapper>
         <Label>유튜브</Label>
