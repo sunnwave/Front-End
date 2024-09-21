@@ -116,18 +116,18 @@ export default function NewPage() {
       setContentsError("내용을 입력하지 않았습니다. 내용을 입력해주세요");
     }
 
-    const result = await createBoard({
-      variables: {
-        createBoardInput: {
-          writer: writer,
-          password: password,
-          title: subject,
-          contents: contents,
+    if (writer && password && subject && contents) {
+      const result = await createBoard({
+        variables: {
+          createBoardInput: {
+            writer: writer,
+            password: password,
+            title: subject,
+            contents: contents,
+          },
         },
-      },
-    });
-    console.log(result);
-    if (writer && password && subject && contents && result) {
+      });
+      console.log(result);
       alert("게시글이 등록되었습니다.");
     }
   };
