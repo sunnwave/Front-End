@@ -31,15 +31,15 @@ export default function FaqPage() {
       <Body>
         <SearchWrapper>
           <SearchIcon>
-            <SearchIconImg src={"search_icon.png"} />
+            <SearchIconImg src={"01/search_icon.png"} />
           </SearchIcon>
         </SearchWrapper>
         <ProfileWrapper>
           <ProfileLabel>마이</ProfileLabel>
-          <ProfileImage src={"profile_image.png"} />
+          <ProfileImage src={"01/profile_image.png"} />
           <ProfileName>임정아</ProfileName>
           <ProfileButton>
-            <MoreInfoIconImg src={"arrow2_icon.png"} />
+            <MoreInfoIconImg src={"01/arrow2_icon.png"} />
           </ProfileButton>
         </ProfileWrapper>
         <MenuWrapper>
@@ -61,7 +61,7 @@ export default function FaqPage() {
               <QuestionTitle>리뷰 작성은 어떻게 하나요?</QuestionTitle>
             </QuestionTitleWrapper>
             <QuestionToggle>
-              <ToggleIconImg src={"arrow_icon.png"} />
+              <ToggleIconImg src={"01/arrow_icon.png"} />
             </QuestionToggle>
           </QuestionWrapper>
           <QuestionWrapper>
@@ -70,7 +70,7 @@ export default function FaqPage() {
               <QuestionTitle>리뷰 수정/삭제는 어떻게 하나요?</QuestionTitle>
             </QuestionTitleWrapper>
             <QuestionToggle>
-              <ToggleIconImg src={"arrow_icon.png"} />
+              <ToggleIconImg src={"01/arrow_icon.png"} />
             </QuestionToggle>
           </QuestionWrapper>
           <QuestionWrapper>
@@ -79,7 +79,7 @@ export default function FaqPage() {
               <QuestionTitle>아이디/비밀번호를 잊어버렸어요</QuestionTitle>
             </QuestionTitleWrapper>
             <QuestionToggle>
-              <ToggleIconImg src={"arrow_icon.png"} />
+              <ToggleIconImg src={"01/arrow_icon.png"} />
             </QuestionToggle>
           </QuestionWrapper>
           <QuestionWrapper>
@@ -88,7 +88,7 @@ export default function FaqPage() {
               <QuestionTitle>회원탈퇴를 하고싶어요.</QuestionTitle>
             </QuestionTitleWrapper>
             <QuestionToggle>
-              <ToggleIconImg src={"arrow_icon.png"} />
+              <ToggleIconImg src={"01/arrow_icon.png"} />
             </QuestionToggle>
           </QuestionWrapper>
           <QuestionWrapper>
@@ -97,7 +97,7 @@ export default function FaqPage() {
               <QuestionTitle>출발지 설정은 어떻게 하나요?</QuestionTitle>
             </QuestionTitleWrapper>
             <QuestionToggle>
-              <ToggleIconImg src={"arrow_icon.png"} />
+              <ToggleIconImg src={"01/arrow_icon.png"} />
             </QuestionToggle>
           </QuestionWrapper>
           <QuestionWrapper>
@@ -106,29 +106,29 @@ export default function FaqPage() {
               <QuestionTitle>비밀번호를 변경하고 싶어요</QuestionTitle>
             </QuestionTitleWrapper>
             <QuestionToggle>
-              <ToggleIconImg src={"arrow_icon.png"} />
+              <ToggleIconImg src={"01/arrow_icon.png"} />
             </QuestionToggle>
           </QuestionWrapper>
         </QuestionContainer>
         <Hr></Hr>
         <NavContainer>
           <NavWrapper>
-            <NavIcon src={"home_icon.png"} />
+            <NavIcon src={"01/home_icon.png"} />
             <NavLabel>홈</NavLabel>
           </NavWrapper>
           <NavWrapper>
             <NavIcon
-              src={"location_icon.png"}
+              src={"01/location_icon.png"}
               style={{ width: "35px", height: "40px" }}
             />
             <NavLabel>잇츠로드</NavLabel>
           </NavWrapper>
           <NavWrapper>
-            <NavIcon src={"wish_icon.png"} />
+            <NavIcon src={"01/wish_icon.png"} />
             <NavLabel>마이찜</NavLabel>
           </NavWrapper>
           <NavWrapper>
-            <NavIcon src={"my_icon.png"} />
+            <NavIcon src={"01/my_icon.png"} />
             <NavLabel style={{ color: "#FF1B6D" }}>마이</NavLabel>
           </NavWrapper>
         </NavContainer>
