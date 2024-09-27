@@ -51,6 +51,8 @@ export const ProfileName = styled.label`
 `;
 export const ProfileButton = styled.button`
   margin-left: 2px;
+  border: none;
+  background-color: white;
 `;
 
 export const MoreInfoIconImg = styled.img``;
@@ -113,8 +115,8 @@ export const QuestionTitle = styled.label`
   margin-top: 5px;
 `;
 export const QuestionToggle = styled.button`
-  /* width: 22.63px;
-  height: 22.63px; */
+  border: none;
+  background-color: white;
 `;
 export const ToggleIconImg = styled.img``;
 export const NavContainer = styled.div`
