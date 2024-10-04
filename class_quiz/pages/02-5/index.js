@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   width: 640px;
@@ -124,6 +125,42 @@ const KakaoLogo = styled.img`
 `;
 
 export default function statePractice5() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const onChangeEmail = function (event) {
+    setEmail(event.target.value);
+  };
+
+  const onChangePassword = function (event) {
+    setPassword(event.target.value);
+  };
+
+  const onClickLogin = function () {
+    console.log(email, password);
+    if (!email) {
+      setEmailError("이메일을 입력해주세요");
+    } else {
+      if (email && !email.includes("@")) {
+        setEmailError("이메일 주소를 다시 확인해주세요");
+      } else {
+        setEmailError("");
+      }
+    }
+
+    if (!password) {
+      setPasswordError("비밀번호를 입력해주세요");
+    } else {
+      if ((password && password.length < 8) || password.length > 16) {
+        setPasswordError("8~16자의 영문, 숫자, 특수 문자만 사용 가능합니다.");
+      } else {
+        setPasswordError("");
+      }
+    }
+  };
+
   return (
     <>
       <Wrapper style={{ backgroundImage: `url("02-5/background.png")` }}>
@@ -133,17 +170,17 @@ export default function statePractice5() {
         </LogoWrapper>
         <InputContainer>
           <InputWrapper>
-            <Input />
+            <Input onChange={onChangeEmail} />
             <DeleteLogo src="/02-5/delete.png" />
           </InputWrapper>
-          <ErrorMessage></ErrorMessage>
+          <ErrorMessage>{emailError}</ErrorMessage>
           <InputWrapper>
-            <Input type="password" />
+            <Input type="password" onChange={onChangePassword} />
             <DeleteLogo src="/02-5/delete.png" />
           </InputWrapper>
-          <ErrorMessage></ErrorMessage>
+          <ErrorMessage>{passwordError}</ErrorMessage>
         </InputContainer>
-        <LoginButton>로그인</LoginButton>
+        <LoginButton onClick={onClickLogin}>로그인</LoginButton>
         <SubMenuWrapper>
           <SubMenu>이메일 찾기</SubMenu>
           <Verline></Verline>
