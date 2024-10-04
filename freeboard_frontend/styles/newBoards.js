@@ -38,17 +38,19 @@ export const Writer = styled.input`
   height: 52px;
   border: 1px solid #bdbdbd;
   padding: 20px;
-
-  width: 486px;
-  height: 52px;
   padding-left: 16px;
-  border: 1px solid #bdbdbd;
+  &::placeholder {
+    color: #c4c4c4;
+  }
 `;
 export const Password = styled.input`
   width: 486px;
   height: 52px;
   border: 1px solid #bdbdbd;
   padding: 20px;
+  &::placeholder {
+    color: #c4c4c4;
+  }
 `;
 export const Subject = styled.input`
   width: 996px;
@@ -57,6 +59,9 @@ export const Subject = styled.input`
   left: 461px;
   padding: 20px;
   border: 1px solid #bdbdbd;
+  &::placeholder {
+    color: #c4c4c4;
+  }
 `;
 export const Contents = styled.textarea`
   width: 996px;
@@ -65,6 +70,10 @@ export const Contents = styled.textarea`
   left: 461px;
   padding: 20px;
   border: 1px solid #bdbdbd;
+  resize: none;
+  &::placeholder {
+    color: #c4c4c4;
+  }
 `;
 export const ZipcodeWrapper = styled.div`
   display: flex;
@@ -78,6 +87,9 @@ export const Zipcode = styled.input`
   padding: 20px;
   margin-right: 20px;
   border: 1px solid #bdbdbd;
+  &::placeholder {
+    color: #c4c4c4;
+  }
 `;
 export const SearchButton = styled.button`
   width: Hug (124px) px;
@@ -110,6 +122,9 @@ export const Youtube = styled.input`
   left: 461px;
   padding: 20px;
   border: 1px solid #bdbdbd;
+  &::placeholder {
+    color: #c4c4c4;
+  }
 `;
 export const ImageWrapper = styled.div`
   width: 996px;
@@ -122,17 +137,16 @@ export const UploadButtonWrapper = styled.div`
   margin-top: 20px;
 `;
 export const UploadButton = styled.button`
-width: 78px;
-height: 78px;
-top: 2150px;
-left: 461px;
-background-color: #bdbdbd;
-margin-right: 24px;
-outline: none;
-border: none;
-cursor: pointer;
-color:background: #4F4F4F;
-
+  width: 78px;
+  height: 78px;
+  top: 2150px;
+  left: 461px;
+  background-color: #bdbdbd;
+  margin-right: 24px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #4f4f4f;
 `;
 export const OptionWrapper = styled.div`
   width: 996px;
@@ -151,6 +165,7 @@ export const RadioButton = styled.input`
   left: 558px;
   padding: 2px 0px 0px 0px;
   cursor: pointer;
+  border: 4px solid green;
 `;
 
 export const RadioLabel = styled.label`
