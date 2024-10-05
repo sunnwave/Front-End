@@ -51,10 +51,6 @@ export default function NewPage() {
   const [password, setPassword] = useState("");
   const [subject, setSubject] = useState("");
   const [contents, setContents] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [address, setAddress] = useState("");
-  const [addressDetail, setAddressDetail] = useState("");
-  const [youtube, setYoutube] = useState("");
 
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");

@@ -10,6 +10,16 @@ export const Wrapper = styled.div`
   border: 1px solid gray;
   box-shadow: 0px 4px 20px 0px #00000033;
 `;
+export const RegisterForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+  margin: 100px;
+  padding: 80px 102px 100px 102px;
+  border: 1px solid gray;
+  box-shadow: 0px 4px 20px 0px #00000033;
+`;
 
 export const Title = styled.div`
   font-family: Noto Sans CJK KR;
