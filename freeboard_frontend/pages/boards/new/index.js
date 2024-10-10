@@ -123,7 +123,7 @@ export default function NewPage() {
           },
         },
       });
-      console.log(result);
+      console.log(result.data);
       alert("게시글이 등록되었습니다.");
     }
   };

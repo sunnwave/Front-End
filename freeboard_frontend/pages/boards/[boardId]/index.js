@@ -1,3 +1,4 @@
+import { gql, useQuery } from "@apollo/client";
 import {
   BoardWrapper,
   BottomNavWrapper,
@@ -21,9 +22,32 @@ import {
   Wrapper,
   Youtube,
 } from "../../../styles/detailBoard";
+import { useRouter } from "next/router";
+import moment from "moment";
+
+const FETCH_BOARD = gql`
+  query fetchBoard($boardId: ID!) {
+    fetchBoard(boardId: $boardId) {
+      writer
+      title
+      contents
+      youtubeUrl
+      likeCount
+      dislikeCount
+      images
+      createdAt
+    }
+  }
+`;
 
 export default function DetailPage() {
-  console.log(process.env);
+  const router = useRouter();
+
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: { boardId: router.query.boardId },
+  });
+
+  console.log(data?.fetchBoard);
   return (
     <>
       <Wrapper>
@@ -31,8 +55,10 @@ export default function DetailPage() {
           <Header>
             <ProfileImg src={"/detailBoard/profile.png"} />
             <TextWrapper>
-              <UserName>노원두</UserName>
-              <Date>Date:2024.07.12</Date>
+              <UserName>{data?.fetchBoard?.writer}</UserName>
+              <Date>
+                Date:{moment(data?.fetchBoard?.createdAt).format("YYYY.MM.DD")}
+              </Date>
             </TextWrapper>
             <IconWrapper>
               <HeaderIcon src={"/detailBoard/ic_link.png"} />
@@ -44,13 +70,11 @@ export default function DetailPage() {
             </IconWrapper>
           </Header>
           <ContentsWrapper>
-            <Title>게시글 제목입니다.</Title>
+            <Title>{data?.fetchBoard?.title}</Title>
             <Image src={"/detailBoard/image.png"} />
-            <DetailContents>
-              가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-            </DetailContents>
+            <DetailContents>{data?.fetchBoard?.contents}</DetailContents>
             <Youtube
-              src="https://www.youtube.com/embed/y5rVyD6UKvo?si=8hnoIRQ1h8otvqKN"
+              src="https://www.youtube.com/embed/yQ3yNzJVXoc?si=oOO5ZeR-jyDMH0h5"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -60,11 +84,15 @@ export default function DetailPage() {
             <LikesContainer>
               <LikeWrapper>
                 <LikeIcon src={"/detailBoard/ic_thumb_up.png"} />
-                <Count style={{ color: "#FFD600" }}>1920</Count>
+                <Count style={{ color: "#FFD600" }}>
+                  {data?.fetchBoard?.likeCount}
+                </Count>
               </LikeWrapper>
               <LikeWrapper>
                 <LikeIcon src={"/detailBoard/ic_thumb_down.png"} />
-                <Count style={{ color: "#828282" }}>1920</Count>
+                <Count style={{ color: "#828282" }}>
+                  {data?.fetchBoard?.dislikeCount}
+                </Count>
               </LikeWrapper>
             </LikesContainer>
           </ContentsWrapper>

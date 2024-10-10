@@ -28,6 +28,7 @@ import {
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const CREATE_BOARD = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!) {
@@ -54,6 +55,7 @@ export default function NewPage() {
     formState: { errors },
   } = useForm();
 
+  const router = useRouter();
   console.log(errors);
 
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -66,11 +68,14 @@ export default function NewPage() {
           password: data.password,
           title: data.subject,
           contents: data.contents,
+          youtubeUrl: data.youtubeUrl,
         },
       },
     });
 
-    console.log(result);
+    console.log(result.data);
+    alert("게시물이 등록되었습니다");
+    router.push(`/boards/${result.data.createBoard._id}`);
   };
 
   return (
@@ -133,7 +138,10 @@ export default function NewPage() {
       </InputWrapper>
       <InputWrapper>
         <Label>유튜브</Label>
-        <Youtube placeholder="링크를 복사해주세요." {...register("youtube")} />
+        <Youtube
+          placeholder="링크를 복사해주세요."
+          {...register("youtubeUrl")}
+        />
       </InputWrapper>
       <ImageWrapper>
         <Label>사진 첨부</Label>

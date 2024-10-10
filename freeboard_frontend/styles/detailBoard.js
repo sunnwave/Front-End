@@ -45,14 +45,12 @@ export const TextWrapper = styled.div`
   margin-right: 718px;
 `;
 export const UserName = styled.div`
-  width: 67px;
   height: 36px;
   font-family: Noto Sans CJK KR;
   font-size: 24px;
   font-weight: 500;
   line-height: 35.52px;
   text-align: left;
-
   color: #000000;
 `;
 export const Date = styled.div`
@@ -162,4 +160,9 @@ export const NavButton = styled.button`
   gap: 8px;
   border: 1px solid #bdbdbd;
   background: #ffffff;
+  font-family: Noto Sans CJK KR;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23.68px;
+  text-align: center;
 `;
