@@ -56,7 +56,6 @@ export default function NewPage() {
   } = useForm();
 
   const router = useRouter();
-  console.log(errors);
 
   const [createBoard] = useMutation(CREATE_BOARD);
 
