@@ -39,6 +39,7 @@ export default function BoardRegisterUI({
   onChangeAddressDetail,
   onChangeYoutube,
   onClickRegister,
+  buttonColor,
 }) {
   return (
     <>
@@ -115,7 +116,12 @@ export default function BoardRegisterUI({
           </RadioWrapper>
         </OptionWrapper>
         <ButtonWrapper>
-          <RegisterButton onClick={onClickRegister}>등록하기</RegisterButton>
+          <RegisterButton
+            onClick={onClickRegister}
+            style={{ background: buttonColor }}
+          >
+            등록하기
+          </RegisterButton>
         </ButtonWrapper>
       </Wrapper>
     </>

@@ -199,7 +199,7 @@ export const RegisterButton = styled.button`
   margin-left: 12px;
   margin-right: 12px;
   cursor: pointer;
-  background: #ffd600;
+  /* background: #ffd600; */
 `;
 
 export const Error = styled.div`

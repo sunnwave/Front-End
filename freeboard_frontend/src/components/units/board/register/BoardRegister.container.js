@@ -10,6 +10,8 @@ export default function BoardRegister() {
   const [subject, setSubject] = useState("");
   const [contents, setContents] = useState("");
 
+  const [buttonColor, setButtonColor] = useState("#EFEFEF");
+
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [subjectError, setSubjectError] = useState("");
@@ -24,11 +26,21 @@ export default function BoardRegister() {
     if (event.target.value !== "") {
       setWriterError("");
     }
+    if (event.target.value && password && subject && contents) {
+      setButtonColor("#ffd600");
+    } else {
+      setButtonColor("#EFEFEF");
+    }
   }
   function onChangePassword(event) {
     setPassword(event.target.value);
     if (event.target.value !== "") {
       setPasswordError("");
+    }
+    if (writer && event.target.value && subject && contents) {
+      setButtonColor("#ffd600");
+    } else {
+      setButtonColor("#EFEFEF");
     }
   }
   function onChangeSubject(event) {
@@ -36,11 +48,21 @@ export default function BoardRegister() {
     if (event.target.value !== "") {
       setSubjectError("");
     }
+    if (writer && password && event.target.value && contents) {
+      setButtonColor("#ffd600");
+    } else {
+      setButtonColor("#EFEFEF");
+    }
   }
   function onChangeContents(event) {
     setContents(event.target.value);
     if (event.target.value !== "") {
       setContentsError("");
+    }
+    if (writer && event.target.value && password && subject) {
+      setButtonColor("#ffd600");
+    } else {
+      setButtonColor("#EFEFEF");
     }
   }
   function onChangeZipcode(event) {
@@ -73,6 +95,7 @@ export default function BoardRegister() {
     }
 
     if (writer && password && subject && contents) {
+      event.target;
       try {
         const result = await createBoard({
           variables: {
@@ -108,6 +131,7 @@ export default function BoardRegister() {
         onChangeAddressDetail={onChangeAddressDetail}
         onChangeYoutube={onChangeYoutube}
         onClickRegister={onClickRegister}
+        buttonColor={buttonColor}
       />
     </>
   );
