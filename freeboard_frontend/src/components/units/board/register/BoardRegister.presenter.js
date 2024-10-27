@@ -23,7 +23,7 @@ import {
   ButtonWrapper,
   RegisterButton,
   Error,
-} from "@/styles/newBoards";
+} from "./BoardRegister.styles";
 
 export default function BoardRegisterUI({
   onChangeWriter,

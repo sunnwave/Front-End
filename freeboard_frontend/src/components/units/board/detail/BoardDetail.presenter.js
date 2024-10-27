@@ -20,7 +20,7 @@ import {
   Title,
   UserName,
   Youtube,
-} from "@/styles/detailBoard";
+} from "./BoardDetail.styles";
 import moment from "moment";
 
 export default function BoardDetailUI(props) {
@@ -50,14 +50,7 @@ export default function BoardDetailUI(props) {
             <Title>{props.data?.fetchBoard?.title}</Title>
             <Image src={"/detailBoard/image.png"} />
             <DetailContents>{props.data?.fetchBoard?.contents}</DetailContents>
-            <Youtube
-              src="https://www.youtube.com/embed/yQ3yNzJVXoc?si=oOO5ZeR-jyDMH0h5"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></Youtube>
+            <Youtube></Youtube>
             <LikesContainer>
               <LikeWrapper>
                 <LikeIcon src={"/detailBoard/ic_thumb_up.png"} />
