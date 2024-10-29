@@ -61,15 +61,16 @@ export default function Register(props) {
   };
 
   const onClickUpdate = async () => {
+    const myUpdateProductInput = {};
+    if (name) myUpdateProductInput.name = name;
+    if (detail) myUpdateProductInput.detail = detail;
+    if (price) myUpdateProductInput.price = Number(price);
+
     try {
       const result = await updateProduct({
         variables: {
           productId: router.query.productId,
-          updateProductInput: {
-            name,
-            detail,
-            price: Number(price),
-          },
+          updateProductInput: myUpdateProductInput,
         },
       });
       router.push(`/08/products/${router.query.productId}`);
