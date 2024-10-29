@@ -27,20 +27,6 @@ export default function Bonus3Page() {
     } else {
       SetCheckedItems([]);
     }
-    // if (event.target.checked) {
-    //   const temp = Array.from({ length: Notices.length }, (el, i) =>
-    //     String(i + 1)
-    //   );
-    //   SetCheckedItems(temp);
-    // } else {
-    //   SetCheckedItems([]);
-    // }
-
-    // if (checkedItems.length === Notices.length) {
-    //   event.target.checked = true;
-    // } else {
-    //   event.target.checked = false;
-    // }
   };
 
   const onChangeSingleCheckBox = (el) => {
