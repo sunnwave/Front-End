@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 1920px;
+  padding: 200px 360px;
 `;
 
 export const BoardWrapper = styled.div`
@@ -83,7 +84,6 @@ export const ContentsWrapper = styled.div`
   align-items: center;
 `;
 export const Title = styled.div`
-  width: 285px;
   height: 54px;
   font-family: Noto Sans CJK KR;
   font-size: 36px;
@@ -165,4 +165,9 @@ export const NavButton = styled.button`
   font-weight: 500;
   line-height: 23.68px;
   text-align: center;
+  cursor: pointer;
+  :hover {
+    background-color: #ffd600;
+    color: white;
+  }
 `;

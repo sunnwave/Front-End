@@ -70,7 +70,7 @@ export default function BoardDetailUI(props) {
         <BottomNavWrapper>
           <NavButton>목록으로</NavButton>
           <NavButton>수정하기</NavButton>
-          <NavButton>삭제하기</NavButton>
+          <NavButton onClick={props.onClickDelete}>삭제하기</NavButton>
         </BottomNavWrapper>
       </Wrapper>
     </>
