@@ -26,12 +26,14 @@ import {
 } from "./BoardRegister.styles";
 
 export default function BoardRegisterUI({
+  data,
+  isUpdate,
   onChangeWriter,
   writerError,
   onChangePassword,
   passwordError,
-  onChangeSubject,
-  subjectError,
+  onChangeTitle,
+  titleError,
   onChangeContents,
   contentsError,
   onChangeZipcode,
@@ -39,12 +41,13 @@ export default function BoardRegisterUI({
   onChangeAddressDetail,
   onChangeYoutube,
   onClickRegister,
+  onClickUpdate,
   buttonColor,
 }) {
   return (
     <>
       <Wrapper>
-        <Title>게시물 등록</Title>
+        <Title>게시물 {isUpdate ? "수정" : "등록"}</Title>
         <WriterWrapper>
           <InputWrapper>
             <Label>작성자</Label>
@@ -52,6 +55,7 @@ export default function BoardRegisterUI({
               type="text"
               placeholder="이름을 적어주세요."
               onChange={onChangeWriter}
+              defaultValue={data?.fetchBoard.writer}
             />
             <Error>{writerError}</Error>
           </InputWrapper>
@@ -70,15 +74,17 @@ export default function BoardRegisterUI({
           <Subject
             type="text"
             placeholder="제목을 작성해주세요."
-            onChange={onChangeSubject}
+            onChange={onChangeTitle}
+            defaultValue={data?.fetchBoard.title}
           />
-          <Error>{subjectError}</Error>
+          <Error>{titleError}</Error>
         </InputWrapper>
         <InputWrapper>
           <Label>내용</Label>
           <Contents
             placeholder="내용을 작성해주세요."
             onChange={onChangeContents}
+            defaultValue={data?.fetchBoard.contents}
           />
           <Error>{contentsError}</Error>
         </InputWrapper>
@@ -117,10 +123,10 @@ export default function BoardRegisterUI({
         </OptionWrapper>
         <ButtonWrapper>
           <RegisterButton
-            onClick={onClickRegister}
+            onClick={isUpdate ? onClickUpdate : onClickRegister}
             style={{ background: buttonColor }}
           >
-            등록하기
+            {isUpdate ? "수정" : "등록"}하기
           </RegisterButton>
         </ButtonWrapper>
       </Wrapper>

@@ -3,7 +3,7 @@ import BoardRegister from "@/src/components/units/board/register/BoardRegister.c
 export default function NewPage() {
   return (
     <>
-      <BoardRegister />
+      <BoardRegister isUpdate={false} />
     </>
   );
 }
