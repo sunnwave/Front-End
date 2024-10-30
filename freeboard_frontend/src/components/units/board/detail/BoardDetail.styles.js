@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   width: 1920px;
   padding: 200px 360px;
 `;
@@ -170,4 +170,30 @@ export const NavButton = styled.button`
     background-color: #ffd600;
     color: white;
   }
+`;
+export const Hr = styled.hr`
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  margin-top: 87px;
+`;
+
+export const CommentTitleWrapper = styled.div`
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 40px;
+`;
+export const CommentIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+`;
+export const CommentLabel = styled.label`
+  font-family: Noto Sans CJK KR;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26.64px;
+  text-align: left;
 `;

@@ -20,8 +20,14 @@ import {
   Title,
   UserName,
   Youtube,
+  Hr,
+  CommentTitleWrapper,
+  CommentIcon,
+  CommentLabel,
 } from "./BoardDetail.styles";
 import moment from "moment";
+import CommentWrite from "../commentwrite/CommentWrite.container";
+import CommentRead from "../commentread/CommentRead.container";
 
 export default function BoardDetailUI(props) {
   return (
@@ -72,6 +78,13 @@ export default function BoardDetailUI(props) {
           <NavButton onClick={props.onClickUpdate}>수정하기</NavButton>
           <NavButton onClick={props.onClickDelete}>삭제하기</NavButton>
         </BottomNavWrapper>
+        <Hr />
+        <CommentTitleWrapper>
+          <CommentIcon src="/comment/ic_comment.png" />
+          <CommentLabel>댓글</CommentLabel>
+        </CommentTitleWrapper>
+        <CommentWrite isUpdate={false} />
+        <CommentRead />
       </Wrapper>
     </>
   );
