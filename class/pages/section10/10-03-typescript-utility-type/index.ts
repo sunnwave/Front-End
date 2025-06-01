@@ -54,7 +54,7 @@ type fff=Record<eee, IProfile>
 type ggg=keyof IProfile // "name"| "age"| "school" |"hobby"
 let myprofile: ggg="name"
 
-//7. type vs interface 차이 => interface는 선언 병합 가능 
+//7. type vs interface 차이 => interface는 선언 병합 가능, type은 불가능
 export interface IProfile{
   candy:number //선언병합으로 추가됨
 }
