@@ -1,6 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { IQuery, IQueryFetchBoardArgs } from '../../../src/commons/types/generated/types';
+import {
+  IQuery,
+  IQueryFetchBoardArgs,
+} from "../../../src/commons/types/generated/types";
 
 const FECTH_BOARD = gql`
   query fetchBoard($number: Int) {
@@ -15,9 +18,12 @@ const FECTH_BOARD = gql`
 
 export default function StaticRoutingMovePage() {
   const router = useRouter();
-  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(FECTH_BOARD, {
-    variables: { number: Number(router.query.sub) },
-  });
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
+    FECTH_BOARD,
+    {
+      variables: { number: Number(router.query.sub) },
+    },
+  );
   return (
     <div>
       <div>{router.query.sub}번 게시글로 이동이 완료되었습니다</div>

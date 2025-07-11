@@ -28,7 +28,7 @@ export default function GraphqlMutationPage() {
       console.log(result);
       console.log(result.data.createBoard.number);
       router.push(
-        `/section05/05-05-dynamic-routing-board-mutation-moved/${result.data.createBoard.number}`
+        `/section05/05-05-dynamic-routing-board-mutation-moved/${result.data.createBoard.number}`,
       );
     } catch (error) {
       alert(error.message);

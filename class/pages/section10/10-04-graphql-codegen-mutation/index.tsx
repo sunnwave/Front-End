@@ -1,6 +1,8 @@
 import { useMutation, gql } from "@apollo/client";
-import { IMutation, IMutationCreateBoardArgs } from '../../../src/commons/types/generated/types';
-import { useState } from 'react';
+import {
+  IMutation,
+  IMutationCreateBoardArgs,
+} from "../../../src/commons/types/generated/types";
 
 const myGraphql = gql`
   mutation createBoard($writer: String, $title: String, $contents: String) {
@@ -15,7 +17,10 @@ const myGraphql = gql`
 export default function GraphqlMutationPage() {
   // const [counter, setCounter]=useState<number>(0)
   // const [myFunc] = useMutation<결과타입, 변수타입>(myGraphql);
-  const [myFunc] = useMutation<Pick<IMutation,"createBoard">, IMutationCreateBoardArgs>(myGraphql);
+  const [myFunc] = useMutation<
+    Pick<IMutation, "createBoard">,
+    IMutationCreateBoardArgs
+  >(myGraphql);
 
   const onClickSubmit = async () => {
     const result = await myFunc({

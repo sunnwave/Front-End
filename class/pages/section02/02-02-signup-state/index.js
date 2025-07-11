@@ -17,7 +17,7 @@ export default function SignupStatePage() {
     setPassword(event.target.value);
   }
 
-  function onClickSignup(event) {
+  function onClickSignup() {
     console.log(email);
     console.log(password);
 

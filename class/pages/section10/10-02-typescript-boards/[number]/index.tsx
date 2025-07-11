@@ -21,7 +21,7 @@ export default function GraphqlMutationPage() {
 
   const onClickMove = () => {
     router.push(
-      `/section10/10-02-typescript-boards/${router.query.number}/edit`
+      `/section10/10-02-typescript-boards/${router.query.number}/edit`,
     );
   };
   return (

@@ -3,7 +3,7 @@ import { useState, ChangeEvent } from "react";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { myGraphql, UPDATE_BOARD } from "./BoardWrite.queries"; //export는 골라서 가져오기 가능
 import { useRouter } from "next/router";
-import { IBoardWriteProps, IMyvariables } from './BoardWrite.types';
+import { IBoardWriteProps, IMyvariables } from "./BoardWrite.types";
 
 // import BoardWriteUI from "./BoardWrite.presenter";       //export default는 한 개만 가져오기 가능
 // import 새로운이름 from "./BoardWrite.presenter";            //export default는 이름 바꾸서 가져오기 가능
@@ -12,7 +12,7 @@ import { IBoardWriteProps, IMyvariables } from './BoardWrite.types';
 // S.BlueButton
 // S.RedInput
 
-export default function BoardWrite(props:IBoardWriteProps) {
+export default function BoardWrite(props: IBoardWriteProps) {
   const [writer, setWriter] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
@@ -31,14 +31,12 @@ export default function BoardWrite(props:IBoardWriteProps) {
     });
     console.log(result);
     router.push(
-      `/section10/10-02-typescript-boards/${result.data.createBoard.number}`
+      `/section10/10-02-typescript-boards/${result.data.createBoard.number}`,
     );
   };
 
   const onClickUpdate = async () => {
-
-    
-    const myvariables:IMyvariables  = {
+    const myvariables: IMyvariables = {
       number: Number(router.query.number),
     };
 
@@ -52,7 +50,7 @@ export default function BoardWrite(props:IBoardWriteProps) {
 
     console.log(result);
     router.push(
-      `/section10/10-02-typescript-boards/${result.data.updateBoard.number}`
+      `/section10/10-02-typescript-boards/${result.data.updateBoard.number}`,
     );
   };
 

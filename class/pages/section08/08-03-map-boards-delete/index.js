@@ -1,5 +1,4 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { Fragment } from "react";
 
 const FETCH_BOARDS = gql`
   query {
@@ -37,7 +36,7 @@ export default function StaticRoutingMovePage() {
   };
   return (
     <div>
-      {data?.fetchBoards.map((el, index) => (
+      {data?.fetchBoards.map((el) => (
         //1.프레그먼트란? <></>, <Fragment></Fragment>
         //2.프레그먼트에 key를 입력하는 방법 => <Fragment key={i}></Fragment>
         //3. 특별한 이유가 없으면? Fragment로 감싸자. <div></div>는 1개 더 그려야돼서 조금 느려짐
