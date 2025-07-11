@@ -10,30 +10,26 @@ module.exports = {
   },
   env: {
     browser: true,
-    node: true,
     es2022: true,
+    node: true,
   },
-  plugins: ["@typescript-eslint", "react", "react-hooks", "prettier"],
+  plugins: ["@typescript-eslint", "react", "prettier"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
-    "next/core-web-vitals", // ✅ Next.js 12에도 호환됨
   ],
   rules: {
-    "react/react-in-jsx-scope": "off", // ✅ Next.js 12에선 자동 JSX
-    "@typescript-eslint/no-explicit-any": "warn",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-misused-promises": "off",
-    "@typescript-eslint/triple-slash-reference": "off",
-    "prefer-const": "warn",
+    "react/react-in-jsx-scope": "off", // Next.js에서는 필요 없음
+    "react/prop-types": "off", // TypeScript 쓰므로 꺼도 됨
+    "prefer-const": "off", // const 권장 비활성화
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
   },
   settings: {
     react: {
-      version: "detect",
+      version: "detect", // 자동으로 React 버전 감지
     },
   },
 };
