@@ -6,7 +6,6 @@ import {
 } from "../../../src/commons/types/generated/types";
 import { useState } from "react";
 import type { MouseEvent } from "react";
-import { start } from "repl";
 
 const FECTH_BOARDS = gql`
   query fechBoards($page: Int) {
