@@ -15,9 +15,6 @@ interface ILayoutprops {
 
 export default function Layout(props: ILayoutprops): JSX.Element {
   const router = useRouter();
-  console.log("============");
-  console.log(router.asPath);
-  console.log("============");
 
   const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
   return (
@@ -29,7 +26,7 @@ export default function Layout(props: ILayoutprops): JSX.Element {
         style={{ height: "200px", border: "1px solid black", display: "flex" }}
       >
         <div style={{ width: "30%", background: "orange" }}>사이드바</div>
-        <div style={{ width: "79%" }}>{props.children}</div>
+        <div style={{ width: "70%" }}>{props.children}</div>
       </div>
       <LayoutFooter />
     </>
