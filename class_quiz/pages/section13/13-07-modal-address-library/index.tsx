@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import DaumPostcodeEmbed, { Address } from "react-daum-postcode";
-import { on } from "events";
 
 export default function App(): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
