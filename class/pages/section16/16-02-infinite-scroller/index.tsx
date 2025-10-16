@@ -4,7 +4,6 @@ import {
   IQueryFetchBoardsArgs,
 } from "../../../src/commons/types/generated/types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useEffect } from "react";
 
 const FETCH_BOARDS = gql`
   query fechBoards($page: Int) {
@@ -27,7 +26,7 @@ export default function StaticRoutingMovePage(): JSX.Element {
     if (data === undefined) return;
 
     void fetchMore({
-      variables: { page: Math.ceil((data?.fetchBoards.length ?? 10) / 10) + 1 },
+      variables: { page: Math.ceil((data?.fetchBoards.length ?? 10) / 10) + 1 }, //data?.fetchBoards.length는 지금까지 렌더링된 게시물의 개수를 의미
       updateQuery: (prev, { fetchMoreResult }) => {
         if (fetchMoreResult.fetchBoards === undefined) {
           return { fetchBoards: [...prev.fetchBoards] };
@@ -40,7 +39,7 @@ export default function StaticRoutingMovePage(): JSX.Element {
   };
 
   return (
-    <div style={{ height: "500px", overflow: "auto" }} id="scrollableDiv">
+    <div style={{ height: "200px", overflow: "auto" }} id="scrollableDiv">
       <InfiniteScroll
         dataLength={data?.fetchBoards.length ?? 0}
         next={onLoadMore}
@@ -56,7 +55,7 @@ export default function StaticRoutingMovePage(): JSX.Element {
         {data?.fetchBoards.map((el) => (
           <div
             key={el._id}
-            style={{ padding: "20px", borderBottom: "1px solid #ddd" }}
+            style={{ padding: "5px", borderBottom: "1px solid #ddd" }}
           >
             <span style={{ margin: "10px" }}>{el.title}</span>
             <span style={{ margin: "10px" }}>{el.writer}</span>
