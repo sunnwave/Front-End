@@ -24,7 +24,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off", // Next.js에서는 필요 없음
     "react/prop-types": "off", // TypeScript 쓰므로 꺼도 됨
     "prefer-const": "off", // const 권장 비활성화
-    "@typescript-eslint/no-misused-promises": "off", // 함수 반환 타입 명시 비활성화
+    // "@typescript-eslint/no-misused-promises": "off", // 함수 반환 타입 명시 비활성화
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": "warn",
   },
