@@ -1,0 +1,26 @@
+//1. HOF - 일반함수
+function first<T>(arg1: T) {
+  return function second<U>(arg2: U): [T, U] {
+    return [arg1, arg2];
+  };
+}
+
+const result = first("영희")(10);
+
+//1. HOF - 일반함수
+const first2 =
+  <T>(arg1: T) =>
+  <U>(arg2: U): [T, U] => {
+    return [arg1, arg2];
+  };
+
+const result2 = first2("영희")(10);
+
+//1. HOF - 일반함수
+const loginCheck =
+  <C>(Component: C) =>
+  <P>(props: P): [C, P] => {
+    return [Component, props];
+  };
+
+const result3 = loginCheck("영희")(10);
