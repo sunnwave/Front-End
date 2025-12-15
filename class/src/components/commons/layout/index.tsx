@@ -23,7 +23,7 @@ export default function Layout(props: ILayoutprops): JSX.Element {
       <LayoutBanner />
       <LayoutNavigation />
       <div
-        style={{ height: "200px", border: "1px solid black", display: "flex" }}
+        style={{ height: "500px", border: "1px solid black", display: "flex" }}
       >
         <div style={{ width: "30%", background: "orange" }}>사이드바</div>
         <div style={{ width: "70%" }}>{props.children}</div>
