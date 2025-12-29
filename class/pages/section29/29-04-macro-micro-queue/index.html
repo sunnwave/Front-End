@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>이벤트루프</title>
+  <script>
+    const onClickLoop=()=>{
+        console.log('시작');
+
+        //마이크로 큐:급한 작업, 매크로 큐:덜 급한 작업
+        //비동기 작업(매크로 큐에 들어감)
+        setTimeout(()=>{
+
+          //비동기작업(마이크로큐에 들어감)
+          new Promise((resolve)=>resolve('철수')).then(()=>{
+            console.log('저는 Promise(setTimeOut안에서 실행될 거예요)')
+          })
+          console.log("저는 setTimeOut 매크로 큐 0초 뒤에 실행될거예요")
+        },0)
+
+        //비동기작업(마이크로큐에 들어감)
+        new Promise((resolve)=>resolve('철수')).then(()=>{
+          console.log('저는 Promise(1) 마이크로 큐에 들어가요. 0초 뒤에 실행될 거예요')
+        })
+
+        //비동기작업(매크로 큐에 들어감)
+        setInterval(()=>{
+          console.log('setInterval 매크로큐에 들어가요 0초마다 실행될 거예요')
+        },0)
+
+        let sum=0
+        for(let i=0;i<9000000000; i++){
+          sum += i;
+        }
+
+        //비동기작업(마이크로큐에 들어감)
+        new Promise((resolve)=>resolve('철수')).then(()=>{
+          console.log('저는 Promise(2) 마이크로 큐에 들어가요. 0초 뒤에 실행될 거예요')
+        })
+
+        console.log('끝');
+    }
+
+
+//               시작
+// index.html:39 끝
+// index.html:21 저는 Promise(1) 마이크로 큐에 들어가요. 0초 뒤에 실행될 거예요
+// index.html:36 저는 Promise(2) 마이크로 큐에 들어가요. 0초 뒤에 실행될 거예요
+// index.html:16 저는 setTimeOut 매크로 큐 0초 뒤에 실행될거예요
+// index.html:14 저는 Promise(setTimeOut안에서 실행될 거예요)
+// 3244index.html:26 setInterval 매크로큐에 들어가요 0초마다 실행될 거예요
+  </script>
+</head>
+<body>
+  <button id="btn" onclick="onClickLoop()">시작하기</button>
+</body>
+</html> 

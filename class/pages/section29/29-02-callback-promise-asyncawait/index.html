@@ -1,0 +1,104 @@
+<!-- `http://numbersapi.com/random?min=1&max=200` -->
+<!--`https://koreanjson.com/posts/${num}`  -->
+<!--`https://koreanjson.com/posts?userId=${userId}`  -->
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>Document</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const myCallback=()=>{
+      const aa=new XMLHttpRequest()
+      aa.open('get', `http://numbersapi.com/random?min=1&max=200`)
+      aa.send()
+      aa.addEventListener('load', (res)=>{
+        console.log(res)//API 요청 결과
+        const num=res.target.response.split(' ')[0]//숫자만 뽑아내기
+
+        const bb=new XMLHttpRequest()
+        bb.open('get',`https://koreanjson.com/posts/${num}`)
+        bb.send()
+        bb.addEventListener('load',(res)=>{
+          console.log(res)//API 요청 결과
+          const userId=JSON.parse(res.target.response).UserId//userId 뽑아내기
+
+
+          const cc=new XMLHttpRequest()
+          cc.open('get',`https://koreanjson.com/posts?userId=${userId}`)
+          cc.send()
+          bb.addEventListener('load',(res)=>{
+            console.log(res)//API 요청 결과
+          })
+        })
+      })
+    }
+
+    // new Promise((성공했을때실행시킬함수, 실패했을때실행시킬함수)=>{
+    //   try{
+    //     //여기서 API를 요청한다면?
+    //     const response="철수" //백엔드에서 "철수" 데이터 받아옴
+    //     성공했을때실행시킬함수(response) //성공하면 이거 실행
+
+    //   }catch(error){
+    //     실패했을때실행시킬함수("실패했습니다!!") //실패하면 이거 실행 
+    //   }
+    // }).then((qqq)=>{
+    //    console.log(qqq) // 철수
+    // }).catch((error)=>{
+    //    console.log(error) //실패했습니다
+    // })
+
+    // const axios={
+    //   get:()=>{
+    //     return new Promise((성공시, 실패시)=>{})
+    //   },
+
+    //   post: ()=>{
+    //     return new Promise ((성공시, 실패시)=>{})
+    //   }
+    // }
+
+    const myPromise=()=>{
+      console.log("첫번째로 실행")
+      axios
+      .get(`http://numbersapi.com/random?min=1&max=200`)
+      .then((res)=>{
+        console.log("두번째로 실행")
+        return axios.get(`http://numbersapi.com/random?min=1&max=200`)
+      })
+      .then((res)=>{
+        console.log("세번째로 실행")
+        return axios.get(`http://numbersapi.com/random?min=1&max=200`)
+      })
+      .then((res)=>{
+        console.log("네번째로 실행")
+        console.log(res) //최종 결과
+      })
+      console.log("다섯번째로 실행")
+    } 
+    //실제 실행 순서는 1->5->2->3->4 : 실행 순서 예측에 어려움이 있을 수 있음
+
+
+    //axios, fetch 등 => 대표적인 Promise를 지원하는 기능
+    //axios, fetch 등을 기다리는 2가지 방법
+    //1. .then() 사용하기
+    //2. await 사용하기 => 주의) await는 아무데나 붙인다고 뒤의 코드를 기다리는 게 아님. promise 앞에만 붙였을 때만 promise를 기다림 
+
+
+    const myAsyncAwait= async ()=>{
+      await axios.get(`http://numbersapi.com/random?min=1&max=200`)
+      await axios.get(`http://numbersapi.com/random?min=1&max=200`)
+      await axios.get(`http://numbersapi.com/random?min=1&max=200`) //실행순서 명확
+    }
+
+  </script>
+</head>
+<body>
+  <button onclick="myCallback()">callback 연습하기</button>
+  <button onclick="myPromise()">promise 연습하기</button>
+  <button onclick="myAsyncAwait()">async/await 연습하기</button>
+</body>
+</html>
