@@ -6,8 +6,11 @@ import {
   fromPromise,
 } from "@apollo/client"; // module 요즘
 import { createUploadLink } from "apollo-upload-client";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/stores";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import {
+  accessTokenState,
+  restoreAccessTokenLoadable,
+} from "../../../commons/stores";
 import { useEffect } from "react";
 import { onError } from "@apollo/client/link/error";
 import { getAccessToken } from "../../../commons/libraries/getAccessToken";
@@ -19,6 +22,7 @@ interface IApolloSettingProps {
 }
 export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const loadable = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
   //1. 프리렌더링 예제-process.browser 방법
   // if (process.browser) {
@@ -43,9 +47,14 @@ export default function ApolloSetting(props: IApolloSettingProps): JSX.Element {
   // 3. 프리렌더링 무시 - useEffect 방법
   useEffect(() => {
     console.log("여기는 브라우저");
-    const result = localStorage.getItem("accessToken");
-    // console.log("로컬스토리지에서 가져온 토큰:", result);
-    setAccessToken(result ?? ""); //로컬스토리지에 저장된 토큰을 리코일 상태관리로 옮김
+    // 1. 기존 방식(refreshToken 적용 전)
+    // const result = localStorage.getItem("accessToken");
+    // setAccessToken(result ?? ""); //로컬스토리지에 저장된 토큰을 리코일 상태관리로 옮김
+
+    // 2. 변경된 방식(refreshToken 적용 후)
+    void loadable.toPromise().then((newAccessToken) => {
+      setAccessToken(newAccessToken ?? "");
+    });
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
