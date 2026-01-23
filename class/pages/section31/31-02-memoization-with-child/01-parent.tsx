@@ -1,0 +1,58 @@
+import { useCallback, useMemo, useState } from "react";
+import MemoizationChildPage from "./02-child";
+
+export default function MemoizationPage(): JSX.Element {
+  console.log("부모 컴포넌트가 렌더링 되었습니다.");
+  let countLet = 0;
+  const [countState, setCountState] = useState(0);
+
+  //1. useMemo로 변수 기억하기
+  const rdom = useMemo(() => Math.random(), []);
+  console.log(rdom);
+
+  //2. useCallback으로 함수 기억하기
+  const onClickCountLet = useCallback((): void => {
+    console.log(countLet + 1);
+    countLet += 1;
+  }, []);
+
+  //3. useCallback 사용시 주의사항 =>state 사용 주의 : prev로 사용하기
+  const onClickCountState = useCallback((): void => {
+    console.log(countState + 1);
+    setCountState((prev) => prev + 1);
+  }, []);
+
+  //4. useMemo로 나만의 useCallback 만들어보기
+  // const onClickCountState2 = useMemo(
+  //   () => (): void => {
+  //     setCountState((prev) => prev + 1);
+  //   },
+  //   [],
+  // );
+
+  return (
+    <>
+      <div>================================</div>
+      <div>부모 컴포넌트</div>
+      <div>카운트(let):{countLet}</div>
+      <button onClick={onClickCountLet}>카운트(let) +1올리기</button>
+
+      <div>카운트(state): {countState}</div>
+      <button onClick={onClickCountState}>카운트(state)+1</button>
+
+      {/* 로직과 UI가 합쳐져서 헷갈림=> 유지보수가 힘듦, 메모이제이션 더 복잡함
+      <div>카운트(state): {countState}</div>
+      <button
+        onClick={useCallback((): void => {
+          console.log(countState + 1);
+          setCountState((prev) => prev + 1);
+        }, [])}
+      >
+        카운트(state)+1
+      </button> */}
+      <div>================================</div>
+      {/* 변경되는 값을 자식 컴포넌트에 props로 넘기면 memo를 했더라도 리렌더링됨 */}
+      <MemoizationChildPage qqq={countState} />
+    </>
+  );
+}
