@@ -25,10 +25,8 @@ export default function LoginPage(): JSX.Element {
   // client.query()===axios.get()과 동일
 
   const client = useApolloClient();
-  const [accessToken] = useRecoilState(accessTokenState);
 
   const onClickButton = async (): Promise<void> => {
-    console.log("🔥 accessToken:", accessToken);
     const result = await client.query({
       query: FETCH_USER_LOGGED_IN,
     });

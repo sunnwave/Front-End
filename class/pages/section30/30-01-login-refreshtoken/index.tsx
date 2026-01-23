@@ -49,7 +49,6 @@ export default function LoginPage(): JSX.Element {
         context: { credentials: "include" },
       });
       const accessToken = result.data?.loginUserExample.accessToken;
-      console.log(accessToken);
 
       //2. 받아온 accessToken을 글로벌스테이트(리코일)에 저장하기
       if (accessToken === undefined) {
