@@ -5,7 +5,6 @@ import {
   IMutationUploadFileArgs,
 } from "../../../src/commons/types/generated/types";
 import { wrapAsync } from "../../../src/commons/libraries/asyncFunc";
-import { set } from "lodash";
 
 const myGraphql = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!) {
