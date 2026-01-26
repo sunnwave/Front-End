@@ -5,7 +5,7 @@ import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyes";
 import { RecoilRoot } from "recoil";
 
-export default function App({ Component }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <div>=============여기는 app.js컴포넌트입니다===========</div>
@@ -14,7 +14,7 @@ export default function App({ Component }: AppProps) {
           <>
             <Global styles={globalStyles} />
             <Layout>
-              <Component />
+              <Component {...pageProps} />
             </Layout>
           </>
         </ApolloSetting>
