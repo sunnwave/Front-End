@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "graphql-codegen",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "cypress open"
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
@@ -58,6 +59,7 @@
     "@types/zen-observable": "^0.8.7",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "cross-fetch": "^4.1.0",
+    "cypress": "14.5.4",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "10.1.1",
     "eslint-config-standard-with-typescript": "^32.0.0",
